@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Oscar Project</title>
+</head>
+
+
+
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+<body>
+
+<h1>Base Skeleton Code</h1>
+
+<table>
+  <tr>
+    <th>Movie Name</th>
+    <th>Year</th>
+	<th>Category</th>
+	<th>IMDB Link</th>
+	
+  </tr>
+  
+  {% for movie in movies %}
+  <tr>
+    <td>{{movie.film}}</td>
+    <td style="text-align:center">{{movie.year}}</td>
+	<td>
+	{%if movie.category is not string%}
+		{% for cat in movie.category %}
+			{{cat}},
+		{% endfor %}
+	{%else%}
+		{{movie.category}}
+	{%endif%}
+	</td>
+	<td><button type="button" onclick="myFunction('{{movie.film}}')">Get IMDB Link</button><p id = "{{movie.film}}"></p></td>
+  </tr>
+  
+  {% endfor %}
+  <script>
+		// Does a api call to the server to get the IMDB link
+		function myFunction(par) {
+			
+			var elem = document.getElementById(par);
+			var s = "http://127.0.0.1:5000/imbdbURL?mname=" + par;
+			var st = "";
+			fetch(s).then(function(response) {
+				response.text().then(function(text) {
+					elem.innerHTML = text;
+				});
+			});
+		}
+	</script>
+  
+</table>
+
+
+</body>
+</html>

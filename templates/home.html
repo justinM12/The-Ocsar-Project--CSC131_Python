@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Oscar Project</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+</head>
+<body>
+    <ul>
+        <img src="{{ url_for('static', filename='Images/TheOscarProjectLogo.png') }}" class= "logo" alt="The Oscar Project" width="180" height="50">
+        <li><a class="active" href="http://127.0.0.1:5000/">Home</a></li>
+        <li><a href="http://127.0.0.1:5000/about">About</a></li>
+        <li><a href="http://127.0.0.1:5000/apiHelp">API</a></li>
+    </ul>
+
+	<div class="background">
+		<img src="{{ url_for('static', filename='Images/Background3Top.jpg') }}" alt="Background" width="1200" height="430">
+        <div id="btn">
+            <div class="move-filter">
+				<div class="search">
+					<div class="field">
+					<form action="http://127.0.0.1:5000/display" method="GET">
+				
+					<label for="mname">Movie Name:</label><br>
+					<input type="text" id="mname" name="mname"><br>
+					
+					<label for="category">Category:</label><br>
+					<input type="text" id="category" name="category"><br>
+					
+					<label for="year">Year:</label><br>
+					<input type="text" id="year" name="year"><br>
+					
+					<label for="winner">Winner:</label><br>
+					<input type="text" id="winner" name="winner"><br>
+				  
+					<input type="submit" value="Submit">
+					</form>
+					</div>
+					
+
+				<div>
+            </div>
+        </div>
+        <div class="bottom_image">
+            <img src="{{ url_for('static', filename='Images/Background3Bottom.jpg') }}" alt="Background" width="1200" height="430">
+        </div>
+    </div>
+	
+    
+    
+
+</body>
+</html>

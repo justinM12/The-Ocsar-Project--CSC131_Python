@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/api_styles.css') }}"
+    </head>
+</head>
+<body>
+    <ul>
+        <img src="{{ url_for('static', filename='Images/TheOscarProjectLogo.png') }}" class= "logo" alt="The Oscar Project" width="180" height="50">
+        <li><a class="active" href="http://127.0.0.1:5000/">Home</a></li>
+        <li><a href="http://127.0.0.1:5000/about">About</a></li>
+        <li><a href="http://127.0.0.1:5000/apiHelp">API</a></li>
+    </ul>
+
+	</ul>
+	<div class="background_center">
+		<img src="{{ url_for('static', filename='Images/Background8.jpg') }}" alt="Background" width="1887" height="1000">
+	</div>
+	<div class="api_text">
+		<br><h1>API Instructions</h1><br>
+		<ul id="over">
+			<h2>Collection Endpoint</h2>
+			<p>To get a collection json attach: /movies/categories/bestpicture/1997 at the end of the url.<br>
+				This url will return a json collection of all the oscar movies that have won or were nominated best picture in 1997.<br>
+				Example: http://website.com/movies/categories/bestpicture/1997<br>
+				Example: https://website.com/movies/categories/actor/1997
+			</p>
+			<h2>Singleton Enpoint</h2>
+			<p>To get a singleton json attach: /movies/categories/bestpicture/1997/winner at the end of the url. This url will return a json singleton for the oscar movie that won best picture in 1997.<br>
+				Example: http://website.com/movies/categories/bestpicture/1997/winner<br>
+				Example: https://website.com/movies/categories/actor/1970/winner
+			</p>
+			<h2>Search Enpoint</h2>
+			<p>To search for movies through the url, use the format http://website.com?category=[CATEGORY]&winner=[WINNER]&name=[NAME]&year=[YEAR].<br>
+				replace [CATEGORY] with the category you want to search for. If you want to exclude a filter, for exmple the winner filter, remove &winner=[WINNER] from the url.<br>
+				Example: http://website.com/search?category=direction&winner=True&year=1987<br>
+				Example: http://website.com/search?category=direction&winner=True<br>
+				Example: http://website.com/search?name=Iron
+			</p>
+			<h2>JSON Output Format</h2>
+			<p>
+			[
+			  {
+				"category": [
+				  "BEST PICTURE", 
+				  "SOUND", 
+				  "WRITING (Screenplay Based on Material Previously Produced or Published)"
+				], 
+				"film": "The English Patient", 
+				"name": "Saul Zaentz, Producer", 
+				"winner": true, 
+				"year": 1997
+			  }
+			]
+			</p>
+		</ul>		
+	</div>
+</body>
+</html>

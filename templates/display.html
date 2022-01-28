@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Oscar Project</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<style>
+			table, th, td {
+			  border: 1px solid gray;
+			  color: #a59051;
+			}
+		</style>
+		
+    </head>
+</head>
+<body>
+    <ul>
+        <img src="{{ url_for('static', filename='Images/TheOscarProjectLogo.png') }}" class= "logo" alt="The Oscar Project" width="180" height="50">
+        <li><a class="active" href="http://127.0.0.1:5000/">Home</a></li>
+        <li><a href="http://127.0.0.1:5000/about">About</a></li>
+        <li><a href="http://127.0.0.1:5000/apiHelp">API</a></li>
+    </ul>
+	
+	<div class="search">
+		<table>
+		  <tr>
+			<th>Movie Name</th>
+			<th>Year</th>
+			<th>Winner</th>
+			<th>Category</th>
+			<th>IMDB Link</th>
+			
+		  </tr>
+		  
+		  {% for movie in movies %}
+		  <tr>
+			<td>{{movie.film}}</td>
+			<td style="text-align:center">{{movie.year}}</td>
+			<td style="text-align:center">{{movie.winner}}</td>
+			<td>
+			{%if movie.category is not string%}
+				{% for cat in movie.category %}
+					{{cat}},
+				{% endfor %}
+			{%else%}
+				{{movie.category}}
+			{%endif%}
+			
+			</td>
+			<td><button type="button" onclick="myFunction('{{movie.film|replace("\'","\\'")}}', '{{movie.year}}')">Get IMDB Link</button><br><a href="" target="_blank" id = "{{movie.film}}"></a></td>
+		  </tr>
+		  
+		  {% endfor %}
+		  <script>
+				// Does a api call to the server to get the IMDB link
+				function myFunction(par, par2) {
+					
+					var elem = document.getElementById(par);
+					var s = "http://127.0.0.1:5000/imbdbURL?mname=" + par + "&year=" + par2;
+					fetch(s).then(function(response) {
+						response.text().then(function(text) {
+							elem.href = text;
+							elem.innerHTML = text;
+						});
+					});
+				}
+			</script>
+		  
+		</table>
+	<div>
+	
+    
+    
+
+</body>
+</html>

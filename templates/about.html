@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/about_styles.css') }}"
+    </head>
+</head>
+<body>
+    <ul>
+        <img src="{{ url_for('static', filename='Images/TheOscarProjectLogo.png') }}" class= "logo" alt="The Oscar Project" width="180" height="50">
+        <li><a class="active" href="http://127.0.0.1:5000/">Home</a></li>
+        <li><a href="http://127.0.0.1:5000/about">About</a></li>
+        <li><a href="http://127.0.0.1:5000/apiHelp">API</a></li>
+    </ul>
+    <div class="background">
+        <img src="{{ url_for('static', filename='Images/Background7.jpg') }}" alt="Background" width="1887" height="900">
+    </div>
+    <div class="about_text" >
+        <h1>Product Vision</h1>
+        <p>Our product is for people who want an easy way to find Oscar winning movies. The product is a website that utilizes the internet to search for an Oscar winning or Oscar nominated movie by award categories. Unlike IMDB, our product provides the user with more Oscar award categories to search from. Our product will provide users information about a particular Oscar winning or Oscar nominated movie, including reviews and where the movie can be watched. It will also allow for other developers to use an API to extend the functionality of our product.</p>
+    </div>
+
+    <script src="index.js" charset="utf-8"></script>
+</body>
+</html>
